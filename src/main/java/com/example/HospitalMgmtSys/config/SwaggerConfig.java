@@ -34,14 +34,14 @@ public class SwaggerConfig {
                                 .url("https://keshav-garg-portfolio.netlify.app"))
                         .license(new License()
                                 .name("Proprietary License")
-                                .url("https://keshav-garg-portfolio.netlify.app")));
-//                .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
-//                .components(new Components()
-//                        .addSecuritySchemes(securitySchemeName,
-//                                new SecurityScheme()
-//                                        .name(securitySchemeName)
-//                                        .type(SecurityScheme.Type.HTTP)
-//                                        .scheme("bearer")
-//                                        .bearerFormat("JWT")));
+                                .url("https://keshav-garg-portfolio.netlify.app")))
+                .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
+                .components(new Components()
+                        .addSecuritySchemes(securitySchemeName,
+                                new SecurityScheme()
+                                        .name(securitySchemeName)
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")));
     }
 }
