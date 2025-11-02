@@ -99,8 +99,8 @@ public class DoctorController {
                     This API updates the details of an existing doctor using the provided ID.
                     It accepts a DoctorDto containing new data and returns the updated DoctorResponseDto.
                     Example use case: Admin edits a doctor's profile information.
-                    """
-w    @PutMapping("/update/{id}")
+                    """)
+    @PutMapping("/update/{id}")
     public DoctorResponseDto updateDoctorById(@PathVariable(name="id") Long id,@RequestBody DoctorDto doctorDto){
 
         log.info("calling service update Doctor for this id - {} and request body {}",id,doctorDto.toString());

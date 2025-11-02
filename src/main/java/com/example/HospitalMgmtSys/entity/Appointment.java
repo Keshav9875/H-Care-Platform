@@ -50,6 +50,4 @@ public class Appointment {
     @OneToOne(mappedBy = "appointment")
     private Invoice invoice;
 
-
-
 }
