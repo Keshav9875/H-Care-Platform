@@ -5,6 +5,8 @@ import com.example.HospitalMgmtSys.dto.PatientResDto;
 import com.example.HospitalMgmtSys.entity.Patient;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface PatientMapper {
 
@@ -13,4 +15,6 @@ public interface PatientMapper {
     Patient toEntity(PatientReqDto patientReqDto);
 
     PatientResDto toResDto(Patient patient);
+
+    List<PatientResDto> toPatientDtoList(List<Patient> patientList);
 }

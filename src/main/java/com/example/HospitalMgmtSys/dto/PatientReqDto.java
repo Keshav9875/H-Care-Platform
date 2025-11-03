@@ -1,6 +1,7 @@
 package com.example.HospitalMgmtSys.dto;
 
 import jakarta.persistence.Lob;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,18 +14,18 @@ import lombok.ToString;
 @NoArgsConstructor
 public class PatientReqDto {
 
-    @NotNull
+    @NotBlank
     private String firstName;
 
     private String lastName;
 
-    @NotNull
+    @NotBlank
     private String dateOfBirth;
 
-    @NotNull
+    @NotBlank
     private String gender;
 
-    @NotNull
+    @NotBlank
     private String phoneNo;
 
 

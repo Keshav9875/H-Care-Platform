@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/patient")
 @Slf4j
@@ -34,10 +36,20 @@ public class PatientController {
 
       }
 
-//     @GetMapping("/fetchAllPatient")
-//     public ResponseEntity<> patientList(){
-//
-//      }
+     @GetMapping("/fetchAllPatient")
+     public ResponseEntity<List<PatientResDto>> fetchAllPatient(){
+         // implement pagination here to find the patient and give to frontend in slot of size 10.
+            log.info("In controller method , to fetch all the patient details.");
+
+            log.info("Calling service method to fetch all patient list");
+
+            List<PatientResDto> patientResDtoList = patientService.fetchAllPatient();
+
+            log.info("The patient res list returning from service is {}",patientResDtoList.toString());
+
+            return ResponseEntity.ok(patientResDtoList);
+
+      }
 
 //     @GetMapping("/fetchPatient/{id}")
 //    public ResponseEntity<> fetchPatientById(){

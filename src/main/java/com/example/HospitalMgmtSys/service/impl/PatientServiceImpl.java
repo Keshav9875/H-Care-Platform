@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class PatientServiceImpl  implements PatientService {
@@ -44,5 +46,26 @@ public class PatientServiceImpl  implements PatientService {
 
 
          return savedPatientResponse;
+    }
+
+    @Override
+    public List<PatientResDto> fetchAllPatient() {
+        log.info("In service fetchAllPatient method to find the detials of patient");
+
+        log.info("calling Repository method to find the details of patient.");
+
+        List<Patient> patientList=  patientRepository.findAll();
+
+        log.info("List of all the patient from db - {}",patientList.toString());
+
+        log.info("calling mapper  for patientlist -> patientResDtoList");
+
+        List<PatientResDto> patientResDtoList = patientMapper.toPatientDtoList(patientList);
+
+        log.info("patientResDtoList is - {}",patientResDtoList.toString());
+
+        return patientResDtoList;
+
+
     }
 }
