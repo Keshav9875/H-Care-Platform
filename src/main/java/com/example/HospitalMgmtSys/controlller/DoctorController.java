@@ -101,7 +101,7 @@ public class DoctorController {
                     Example use case: Admin edits a doctor's profile information.
                     """)
     @PutMapping("/update/{id}")
-    public DoctorResponseDto updateDoctorById(@PathVariable(name="id") Long id,@RequestBody DoctorDto doctorDto){
+    public DoctorResponseDto updateDoctor(@PathVariable(name="id") Long id,@RequestBody DoctorDto doctorDto){
 
         log.info("calling service update Doctor for this id - {} and request body {}",id,doctorDto.toString());
 

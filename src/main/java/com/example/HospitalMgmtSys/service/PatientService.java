@@ -11,4 +11,8 @@ public interface PatientService {
     PatientResDto registerPatient(PatientReqDto patientReqDto);
 
     List<PatientResDto> fetchAllPatient();
+
+    PatientResDto fetchPatientById(Long id);
+
+    PatientResDto  updatePatientDetails(PatientReqDto patientReqDto, Long id );
 }

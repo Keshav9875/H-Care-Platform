@@ -1,9 +1,13 @@
 package com.example.HospitalMgmtSys.mapper;
 
+import com.example.HospitalMgmtSys.dto.DoctorDto;
 import com.example.HospitalMgmtSys.dto.PatientReqDto;
 import com.example.HospitalMgmtSys.dto.PatientResDto;
+import com.example.HospitalMgmtSys.entity.Doctor;
 import com.example.HospitalMgmtSys.entity.Patient;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -17,4 +21,7 @@ public interface PatientMapper {
     PatientResDto toResDto(Patient patient);
 
     List<PatientResDto> toPatientDtoList(List<Patient> patientList);
+
+    @Mapping(target = "patientId", ignore = true)
+    void updatePatientFromDto(PatientReqDto dto, @MappingTarget Patient entity);
 }

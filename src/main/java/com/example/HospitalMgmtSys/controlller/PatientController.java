@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -51,14 +52,35 @@ public class PatientController {
 
       }
 
-//     @GetMapping("/fetchPatient/{id}")
-//    public ResponseEntity<> fetchPatientById(){
-//
-//      }
+     @GetMapping("/fetchPatient/{id}")
+    public ResponseEntity<PatientResDto> fetchPatientById(@PathVariable(name="id") Long id ){
 
-//     @PatchMapping("/update/{id}")
-//     public ResponseEntity<>  updatePatient(){
-//
-//     }
+         log.info("fetch patient by id request reached with this id - {}",id);
+
+         log.info("Calling service to fetch the data of patient through  id");
+
+         PatientResDto patientResult = patientService.fetchPatientById(id);
+
+         log.info("Request id {} to fetch patient and  response is - {}",id, patientResult.toString());
+
+         return ResponseEntity.ok(patientResult);
+
+      }
+
+     @PostMapping("/update/{id}")
+     public ResponseEntity<PatientResDto>  updatePatient(@RequestBody PatientReqDto patientReqDto, Long id){
+
+         log.info("Inside controller - updated patient Request dto is {} and id {}",patientReqDto.toString(),id);
+
+         log.info("Calling service method to update patient of this  id is {}",id);
+
+         //calling service method
+          PatientResDto  updatePatientDetails= patientService.updatePatientDetails(patientReqDto,id);
+
+         log.info("After calling service method the request is {} , id is {} and response is {}",patientReqDto.toString(),id);
+
+         return ResponseEntity.ok(updatePatientDetails);
+
+     }
 
 }
