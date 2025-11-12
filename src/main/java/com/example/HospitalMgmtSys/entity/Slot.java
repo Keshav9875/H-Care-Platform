@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Entity
 @Table(name="slot")
 @Data
@@ -20,19 +23,19 @@ public class Slot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long slotId;
 
-    private static  Long totalSlots = DoctorConstant.totalSlots;
+    private LocalDate date;
 
-    private Long availableSlots;
+    private LocalTime startTime;
 
-    private String status;
+    private LocalTime endTime;
+
+    private String status; // can only be cancelled, available, booked, expire.
 
     // booked by like patient appointment.
     // add this
     @ManyToOne
     @JoinColumn(name="patient_id")
-    Patient patient;
-
-    //added end
+    private  Patient patient;
 
 
     @ManyToOne

@@ -67,6 +67,7 @@ public class PatientController {
 
       }
 
+      // convert to patch  mapping (put vs patch)
      @PostMapping("/update/{id}")
      public ResponseEntity<PatientResDto>  updatePatient(@RequestBody PatientReqDto patientReqDto, Long id){
 
